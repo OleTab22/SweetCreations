@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog - Sweet Creations</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <script type="module">
+        import { Navbar } from './js/components/Navbar.js';
+        import { Footer } from './js/components/Footer.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('header').innerHTML = Navbar();
+            document.getElementById('footer').innerHTML = Footer();
+        });
+    </script>
+</head>
+<body>
+    <header id="header"></header>
+    <main id="main-content">
+        <div class="catalog-container">
+            <div class="catalog-header">
+                <h2>Our Products</h2>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <button id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="catalog-filters">
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="Cakes">Cakes</option>
+                        <option value="Cupcakes">Cupcakes</option>
+                        <option value="Pastries">Pastries</option>
+                    </select>
+                    <select id="sort-filter">
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                        <option value="rating-desc">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+            <div class="catalog-navigation">
+                <div id="pagination" class="pagination"></div>
+            </div>
+            <div id="product-list" class="product-list">
+                <!-- Product cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/catalog.js" type="module"></script>
+</body>
+</html>

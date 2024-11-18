@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="sweet-creations">Sweet Creations</h1>
+            <nav class="site-nav">
+                <ul class="home-parent">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="catalog.html" class="nav-link">Catalog</a></li>
+                    <li><a href="cart.html" class="nav-link">Cart</a></li>
+                    <li><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link login">Login</a></li>
+                    <li><a href="register.html" class="nav-link signup">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Your Wishlist</h1>
+        <div id="wishlist-items" class="product-list">
+            <!-- Wishlist items will be displayed here -->
+        </div>
+    </main>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firestore.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            displayWishlist();
+        });
+    </script>
+</body>
+</html>

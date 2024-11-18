@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sweet Creations</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="sweet-creations">Sweet Creations</h1>
+                <div class="header-right">
+                    <div id="user-profile"></div>
+                    <nav class="site-nav">
+                        <ul class="home-parent">
+                            <!-- Dynamically populated by script.js -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <div id="error-message" class="error-message"></div>
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                    <small class="password-requirements">
+                        Password must be at least 8 characters long and contain at least one uppercase letter, 
+                        one lowercase letter, one number, and one special character.
+                    </small>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <span class="btn-text">Create Account</span>
+                    <div class="loader" style="display: none;"></div>
+                </button>
+                
+                <p class="auth-redirect">
+                    Already have an account? <a href="login.html">Login</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
