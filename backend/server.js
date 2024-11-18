@@ -17,7 +17,7 @@ connectDB();
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: 'https://your-trusted-origin.com' })); // Enable CORS for all routes
+app.use(cors({ origin: process.env.CORS_ORIGIN || 'https://your-trusted-origin.com' })); // Use env variable for CORS origin
 app.use(express.json()); // Parse JSON bodies
 app.use(express.static(path.join(__dirname, '../public_html'))); // Serve static files
 
@@ -52,7 +52,7 @@ const swaggerOptions = {
             version: '1.0.0',
             description: 'API Information'
         },
-        servers: [{ url: 'http://localhost:5000' }]
+        servers: [{ url: `http://localhost:${process.env.PORT || 5000}` }] // Use env variable for server URL
     },
     apis: ['./routes/*.js']
 };
