@@ -34,3 +34,25 @@ async function createOrder(orderData) {
         showNotification('Failed to create order.', 'error');
     }
 }
+
+async function initiateRefund(checkoutId, amount) {
+    try {
+        const response = await fetch('/api/yoco/refund', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ checkoutId, amount })
+        });
+
+        const data = await response.json();
+        if (data.status === 'successful') {
+            console.log('Refund processed successfully:', data);
+            showNotification('Refund processed successfully', 'success');
+        } else {
+            console.error('Failed to process refund');
+            showNotification('Failed to process refund', 'error');
+        }
+    } catch (error) {
+        console.error('Error initiating refund:', error);
+        showNotification('Error initiating refund', 'error');
+    }
+}

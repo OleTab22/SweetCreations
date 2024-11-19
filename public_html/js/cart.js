@@ -48,4 +48,36 @@ document.querySelectorAll('.qty-btn').forEach(btn => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', loadCart); 
+document.addEventListener('DOMContentLoaded', loadCart);
+
+async function initiateCheckout() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0) * 100; // Convert to cents
+    const totalDiscount = 100; // Example discount in cents
+    const subtotalAmount = totalAmount + totalDiscount;
+    const totalTaxAmount = totalAmount - (totalAmount / 1.15);
+
+    try {
+        const response = await fetch('/api/yoco/create-checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                amount: totalAmount,
+                totalDiscount,
+                totalTaxAmount,
+                subtotalAmount
+            })
+        });
+
+        const data = await response.json();
+        if (data.redirectUrl) {
+            window.location.href = data.redirectUrl;
+        } else {
+            console.error('Failed to initiate checkout');
+        }
+    } catch (error) {
+        console.error('Error initiating checkout:', error);
+    }
+}
+
+document.querySelector('.checkout-btn').addEventListener('click', initiateCheckout); 
