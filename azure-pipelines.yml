@@ -1,0 +1,41 @@
+# Node.js Pipeline for Azure DevOps
+# Build, Test, and Deploy a Node.js Project
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+# Step 1: Install Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+# Step 2: Install Dependencies and Build
+- script: |
+    npm install
+    npm run build
+  displayName: 'Install Dependencies and Build'
+
+# Step 3: Run Tests (Optional but Recommended)
+- script: |
+    npm run test
+  displayName: 'Run Tests'
+
+# Step 4: Lint Code (Optional but Recommended)
+- script: |
+    npm run lint
+  displayName: 'Run Linter'
+
+# Step 5: Archive Build Artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'dist'
+    ArtifactName: 'drop'
+  displayName: 'Publish Build Artifacts'
+
+# Step 6: Deploy (Optional)
+# Add deployment steps if needed, such as deploying to a web server, Azure App Service, etc.
