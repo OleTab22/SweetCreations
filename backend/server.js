@@ -8,6 +8,8 @@ const helmet = require('helmet');
 require('./utils/checkEnv');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGO_URI; // Use the environment variable
 
 // Initialize Express app
 const app = express();
