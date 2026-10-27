@@ -79,7 +79,9 @@ The root `package.json` defines:
 npm test
 ```
 
-Test source files are present in the root and backend directories. Results depend on the local configuration; no unverified passing-test percentage is claimed here.
+The focused backend validation test workflow passed **2 of 2 tests** on Node.js 22 in [GitHub Actions on 27 October 2026](https://github.com/OleTab22/SweetCreations/actions/runs/40486193833), after correcting the validator exports in [PR #3](https://github.com/OleTab22/SweetCreations/pull/3).
+
+That check covers email and password validation only. The wider repository contains legacy and incomplete test files; the full authentication, database, order, and payment flows still need reliable integration tests.
 
 ## Development notes
 
