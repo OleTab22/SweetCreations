@@ -102,7 +102,7 @@ function validateOrderData(order) {
     return { isValid: errors.length === 0, errors };
 }
 
-module.exports = { validateEmail, validatePassword, validateProductFields, validateOrderData };
+module.exports = { validateEmail: exports.validateEmail, validatePassword: exports.validatePassword, validateProductFields, validateOrderData };
 
 /**
  * Example usage:
